@@ -50,6 +50,9 @@ public class MenuTest {
         menu.deleteDish("salad");
         assertEquals(dish1, dishes.get(0));
         assertFalse(menu.contains(dish2));
+        String result = menu.deleteDish("salad");
+        String expect = "Fail to remove dish.";
+        assertEquals(expect,result);
     }
 
     @Test
