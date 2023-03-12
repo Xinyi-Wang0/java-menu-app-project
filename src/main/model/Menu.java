@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
+public class Menu implements Writable {
     private ArrayList<Dish> menu;
     private int numOfDish;
 
@@ -79,4 +83,22 @@ public class Menu {
         return menu.contains(dish);
     }
 
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("dish", listOfDishesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this menu as a JSON array
+    private JSONArray listOfDishesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Dish d : menu) {
+            jsonArray.put(d.toJson());
+        }
+
+        return jsonArray;
+    }
 }
