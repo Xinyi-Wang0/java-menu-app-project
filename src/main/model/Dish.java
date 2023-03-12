@@ -29,7 +29,7 @@ public class Dish {
 
     //EFFECTS: return all details of dish
     public String getDish() {
-        return "Name:" + name + "; " + "Ingredients:" + ingredients + "; " + "Price: " + price;
+        return "Name:" + name;
     }
 
 }

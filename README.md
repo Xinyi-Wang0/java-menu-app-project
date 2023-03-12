@@ -24,3 +24,5 @@ A *story* list:
   dishes in my menu.
 - As a user, I would like to be able to see how many dishes are in
   my menu.
+- As a user, I want to be able to save my menu to file
+- As a user, I want to be able to be able to load my menu from file

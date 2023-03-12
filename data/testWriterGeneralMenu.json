@@ -1,0 +1,12 @@
+{"dish": [
+    {
+        "price": 0,
+        "name": "A",
+        "ingredients": "abc"
+    },
+    {
+        "price": 1,
+        "name": "B",
+        "ingredients": "bbb"
+    }
+]}
