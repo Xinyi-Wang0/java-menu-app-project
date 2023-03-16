@@ -2,19 +2,27 @@ package ui;
 
 import model.Dish;
 import model.Menu;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuApp {
+    private static final String JSON_STORE = "./data/menu.json";
     private Menu menu;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the Menu application
     public MenuApp() throws FileNotFoundException {
         menu = new Menu();
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runMenu();
     }
 
@@ -31,6 +39,10 @@ public class MenuApp {
             if (command.equals("Quit")) {
                 System.out.println("Thank you for viewing");
                 break;
+            } else if (command.equals("s")) {
+                saveMenu();
+            } else if (command.equals("l")) {
+                loadMenu();
             } else {
                 processCommand(command);
             }
@@ -46,6 +58,8 @@ public class MenuApp {
         System.out.println("[3] Check menu");
         System.out.println("[4] Number of dishes");
         System.out.println("[5] Delete dish");
+        System.out.println("\ts -> save menu to file");
+        System.out.println("\tl -> load menu from file");
         System.out.println("Quit");
     }
 
@@ -89,6 +103,29 @@ public class MenuApp {
 
         for (Dish d : dishes) {
             System.out.println(d);
+        }
+    }
+
+    // EFFECTS: saves the menu to file
+    private void saveMenu() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(menu);
+            jsonWriter.close();
+            System.out.println("Saved " + menu.allDishes() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads menu from file
+    private void loadMenu() {
+        try {
+            menu = jsonReader.read();
+            System.out.println("Loaded " + menu.allDishes() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }
