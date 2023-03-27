@@ -47,7 +47,8 @@ public class Menu implements Writable {
     public String getDishesDetails(String selectedDishName) {
         for (Dish dish : menu) {
             if (dish.getName().equalsIgnoreCase(selectedDishName)) {
-                String output = dish.getDish() + "\n";
+                String output = dish.getDish() + " " + "Ingredients: " + dish.getIngredients()
+                        + " " + "Price:" + dish.getPrice() + "\n";
                 numOfDish++;
                 return output;
             }

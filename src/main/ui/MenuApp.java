@@ -112,7 +112,7 @@ public class MenuApp {
             jsonWriter.open();
             jsonWriter.write(menu);
             jsonWriter.close();
-            System.out.println("Saved " + menu.allDishes() + " to " + JSON_STORE);
+            System.out.println("Saved " + menu.viewAllDish() + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -123,7 +123,7 @@ public class MenuApp {
     private void loadMenu() {
         try {
             menu = jsonReader.read();
-            System.out.println("Loaded " + menu.allDishes() + " from " + JSON_STORE);
+            System.out.println("Loaded " + menu.viewAllDish() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

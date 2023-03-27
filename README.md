@@ -26,3 +26,15 @@ A *story* list:
   my menu.
 - As a user, I want to be able to save my menu to file
 - As a user, I want to be able to be able to load my menu from file
+
+# Instructions for Grader
+
+- You can generate the first required action related to adding dish to 
+  menu by click the button labelled "Add"
+- You can generate the second required action related to delete dish 
+  from menu by click the button labelled "delete"
+- You can locate my visual component in ui->image package
+- You can save the state of my application by click the button labelled 
+  "save"
+- You can reload the state of my application by click the button labelled
+  "load"
