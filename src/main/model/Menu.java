@@ -1,5 +1,7 @@
 package model;
 
+import model.exception.Event;
+import model.exception.EventLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -20,6 +22,7 @@ public class Menu implements Writable {
     //MODIFIES: this
     //EFFECTS: add dish to this menu
     public void addDish(Dish dish) {
+        EventLog.getInstance().logEvent(new Event("Added dish: " + dish.getName()));
         menu.add(dish);
     }
 
@@ -36,6 +39,7 @@ public class Menu implements Writable {
             if (dish.getName().equalsIgnoreCase(theName)) {
                 removeDish(dish);
                 numOfDish--;
+                EventLog.getInstance().logEvent(new Event("Removed dish: " + dish.getName()));
                 return dish.getName() + " has been removed from menu.";
             }
         }
@@ -59,12 +63,14 @@ public class Menu implements Writable {
     //EFFECTS: return all the dishes in the list
     public String viewAllDish() {
         if (menu.size() == 0) {
+            EventLog.getInstance().logEvent(new Event("List of Dishes: empty \n"));
             return "List of Dishes: empty";
         } else {
             String output = "List of Dishes: ";
             for (Dish dish : menu) {
                 output += "\n" + dish.getDish();
             }
+            EventLog.getInstance().logEvent(new Event("Viewed list of dishes: \n" + output));
             return output;
         }
     }

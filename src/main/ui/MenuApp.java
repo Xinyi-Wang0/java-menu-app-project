@@ -2,6 +2,8 @@ package ui;
 
 import model.Dish;
 import model.Menu;
+import model.exception.Event;
+import model.exception.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -38,6 +40,7 @@ public class MenuApp {
 
             if (command.equals("Quit")) {
                 System.out.println("Thank you for viewing");
+                printLog(EventLog.getInstance());
                 break;
             } else if (command.equals("s")) {
                 saveMenu();
@@ -126,6 +129,12 @@ public class MenuApp {
             System.out.println("Loaded " + menu.viewAllDish() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n");
         }
     }
 }

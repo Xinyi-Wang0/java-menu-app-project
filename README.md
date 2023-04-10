@@ -38,3 +38,30 @@ A *story* list:
   "save"
 - You can reload the state of my application by click the button labelled
   "load"
+
+
+## *Phase 4: Task 2*
+
+Sun Apr 09 20:22:38 PDT 2023
+Added dish: Burger
+
+Sun Apr 09 20:22:40 PDT 2023
+Viewed list of dishes:
+List of Dishes:
+Name:Burger
+
+Sun Apr 09 20:22:45 PDT 2023
+Removed dish: Burger
+
+Sun Apr 09 20:22:49 PDT 2023
+List of Dishes: empty 
+
+
+## *Phase 4: Task 3*
+
+I think in my demo, the hierarchy is not clear enough, for example, once 
+I open it, there are only two buttons on it, but in a real window there 
+might be a display of a form and then a selection of what functions are 
+available to go to. Further, I may want to put save&load at one panel, and 
+add&delete at another. Then in main, a full menu pops up every time a function 
+is completed, and I might want to add a return command to avoid this.
